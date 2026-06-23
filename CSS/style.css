@@ -1,0 +1,1217 @@
+/* TABLE OF CONTENTS:
+   1. CSS Variables & Reset
+   2. Global / Base Styles
+   3. Navigation Bar (shared across all pages)
+   4. Page Title Banner (shared across all pages)
+   5. Footer (shared across all pages)
+   6. HOME PAGE
+   7. OUR CATS PAGE
+   8. EVENTS PAGE
+   9. MENU PAGE 
+   10.ABOUT PAGE
+   11.BOOKINGS PAGE
+   12.Responsiveness / Media Queries
+  = */
+
+
+/* 
+   1. CSS VARIABLES & RESET */
+
+/* CSS custom properties (variables) for the colour scheme.
+   Changing a value here updates it everywhere on the site. */
+:root {
+  --beige:        #f5ead8;   /* Light beige – main page background       */
+  --cream:        #fdf6ec;   /* Cream – card & form backgrounds           */
+  --brown-dark:   #4a3728;   /* Dark brown – nav, headings, card bodies   */
+  --brown-mid:    #6b4c3b;   /* Mid brown – secondary backgrounds         */
+  --brown-light:  #8b6653;   /* Light brown – borders, subtle accents     */
+  --orange:       #d4833a;   /* Warm orange – primary highlight / CTAs    */
+  --orange-hover: #b85e25;   /* Darker orange – button hover states       */
+  --white:        #ffffff;
+  --text-dark:    #2c1f16;   /* Very dark brown for body text             */
+  --shadow:       rgba(74, 55, 40, 0.15);
+
+  --font-display: 'Playfair Display', Georgia, serif;   /* headings        */
+  --font-body:    'Lato', Arial, sans-serif;            /* body / UI text  */
+
+  --radius:  12px;   /* Standard border-radius for cards / buttons */
+  --radius-sm: 6px;
+  --transition: 0.3s ease;
+}
+
+/* Universal box-sizing reset – prevents padding from adding to element width */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   2. GLOBAL / BASE STYLES
+   ============================================================ */
+
+/* Base page styling shared by all pages */
+body {
+  background-color: var(--beige);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Import Google Fonts for the display (heading) and body typefaces */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+/* Smooth scrolling for any anchor links */
+html { scroll-behavior: smooth; }
+
+/* All images are responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility – visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   3. NAVIGATION BAR
+   Shared component – appears on every page
+   ============================================================ */
+
+/* Outer nav wrapper */
+.navbar {
+  background-color: var(--brown-dark);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;   /* Sits above all page content when scrolling */
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Logo block – sits on the left of the nav */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  padding: 0.4rem 0;
+}
+
+/* Paw print icon inside the logo */
+.nav-logo .paw-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/* Café name text next to the paw icon */
+.nav-logo .logo-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* Container for the navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+/* Individual nav link anchor tags */
+.nav-links a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  color: var(--beige);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.02em;
+}
+
+/* Hover state for standard nav links */
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: var(--brown-light);
+  color: var(--white);
+  outline: none;
+}
+
+/* Active page indicator – highlights the current page link */
+.nav-links a.active {
+  background-color: var(--brown-mid);
+  color: var(--white);
+}
+
+/* ── Bookings button – must stand out from other nav links ── */
+.nav-links .btn-booking {
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(212, 131, 58, 0.4);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+/* Hover animation for the Bookings button – slight lift effect */
+.nav-links .btn-booking:hover,
+.nav-links .btn-booking:focus {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 131, 58, 0.5);
+  outline: none;
+}
+
+/* Calendar icon inside the Bookings button */
+.nav-links .btn-booking .cal-icon {
+  font-size: 1rem;
+}
+
+/* Hamburger toggle button – hidden on desktop, shown on mobile */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--beige);
+  border-radius: 3px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ============================================================
+   4. PAGE TITLE BANNER
+   The strip below the nav showing the page name
+   ============================================================ */
+
+.page-banner {
+  background-color: var(--brown-mid);
+  padding: 0.75rem 2rem;
+  text-align: center;
+}
+
+.page-banner h1 {
+  font-family: var(--font-display);
+  color: var(--beige);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   5. FOOTER
+   Shared component at the bottom of every page
+   ============================================================ */
+
+footer {
+  background-color: var(--brown-dark);
+  color: var(--beige);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+footer p { margin-bottom: 0.3rem; }
+footer a { color: var(--orange); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+
+/* ============================================================
+   6. HOME PAGE
+   Styles specific to index.html
+   ============================================================ */
+
+/* ── Main content wrapper on the homepage ── */
+.home-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* ── Section 1: Hero split layout ──
+   Left = intro text, Right = hero cat image */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+/* Dark brown text box used for intro copy */
+.hero-text-box {
+  background-color: var(--brown-dark);
+  color: var(--white);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.hero-text-box h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--orange);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.hero-text-box p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #f0e6d8;
+}
+
+/* CTA button inside the hero text box */
+.hero-text-box .btn-cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.hero-text-box .btn-cta:hover {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+}
+
+/* Hero image on the right side */
+.hero-image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 24px var(--shadow);
+  height: 100%;
+  min-height: 320px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Section 2: Cat of the Week ──
+   Left = text, Right = image + caption */
+.cotw-section {
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* Left column heading and info */
+.cotw-text h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.5rem;
+}
+
+.cotw-text .cotw-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+.cotw-text p {
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+/* Traits badge list */
+.cotw-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  list-style: none;
+}
+
+.cotw-traits li {
+  background-color: var(--brown-dark);
+  color: var(--beige);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Adoption badge */
+.adoption-badge {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Right column: image + caption underneath */
+.cotw-image-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cotw-image-col img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px var(--shadow);
+  object-fit: cover;
+  max-height: 340px;
+}
+
+/* Caption box beneath the cat of the week image */
+.cotw-caption {
+  background-color: var(--brown-dark);
+  color: var(--white);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   7. OUR CATS PAGE
+   Styles specific to cats.html
+   ============================================================ */
+
+/* ── Filter bar ── */
+.cats-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Filter / sort controls row */
+.filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.filter-bar label {
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-right: 0.25rem;
+}
+
+/* Individual filter buttons (Age / Personality / Status) */
+.filter-btn {
+  background-color: var(--brown-dark);
+  color: var(--beige);
+  border: 2px solid transparent;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active-filter {
+  background-color: var(--orange);
+  border-color: var(--orange-hover);
+  transform: translateY(-1px);
+}
+
+/* ── Cat profile grid ── */
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* Individual cat card */
+.cat-card {
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+
+/* Hover effect – card lifts and shadow deepens */
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(74, 55, 40, 0.25);
+}
+
+/* Photo area at the top of each card */
+.cat-card-img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+/* Text area below the photo */
+.cat-card-body {
+  background-color: var(--brown-dark);
+  padding: 1.1rem 1.25rem 1.25rem;
+  color: var(--white);
+}
+
+.cat-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.cat-card-body .cat-meta {
+  font-size: 0.88rem;
+  color: #d8c5b0;
+  margin-bottom: 0.5rem;
+}
+
+.cat-card-body p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #f0e6d8;
+  margin-bottom: 0.75rem;
+}
+
+/* Adoption status badge inside each cat card */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-available {
+  background-color: #2e7d32;   /* Green – cat is available to adopt */
+  color: #fff;
+}
+
+.status-reserved {
+  background-color: #e65100;   /* Orange – cat has been reserved */
+  color: #fff;
+}
+
+.status-resident {
+  background-color: var(--brown-light);   /* Brown – permanent café cat */
+  color: #fff;
+}
+
+
+/* ============================================================
+   8. EVENTS PAGE
+   Styles specific to events.html
+   ============================================================ */
+
+.events-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Two-column alternating layout for events (image | text) */
+.event-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform var(--transition);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Every second event reverses the column order so
+   images alternate left and right for visual variety */
+.event-card.reverse {
+  direction: rtl;   /* reverses the visual column order  */
+}
+
+.event-card.reverse > * {
+  direction: ltr;   /* reset text direction inside children */
+}
+
+/* Image side of an event card */
+.event-img {
+  width: 120%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Text / info side of an event card */
+.event-info {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--brown-dark);
+  color: var(--white);
+}
+
+.event-info .event-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.event-info h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--beige);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.event-info p {
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: #f0e6d8;
+  margin-bottom: 1rem;
+}
+
+/* "Book a Spot" button inside event cards */
+.btn-event {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-event:hover {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   9. MENU PAGE
+   Styles specific to menu.html
+   ============================================================ */
+
+.menu-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Section heading for Food / Drinks categories */
+.menu-category-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--brown-dark);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--orange);
+  display: inline-block;
+}
+
+/* Grid of menu item cards – three per row */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual menu card */
+.menu-card {
+  background-color: var(--brown-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform var(--transition);
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Food / drink photo */
+.menu-card-img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Make the image respect the card's rounded corners at the top
+   so the page background or cream doesn't show through. */
+.menu-card-img {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+/* Card text area */
+.menu-card-body {
+  background-color: var(--brown-dark);
+  color: var(--white);
+  padding: 1rem 1.2rem 1.2rem;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.menu-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.menu-card-body p {
+  font-size: 0.9rem;
+  color: #f0e6d8;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+/* Price displayed at the bottom of each menu card */
+.menu-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--beige);
+}
+
+
+/* ============================================================
+   10. ABOUT PAGE
+   Styles specific to about.html
+   ============================================================ */
+
+.about-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Gallery mosaic at the top of the About page */
+.about-gallery {
+  display: grid;
+  /* Large left photo + two stacked right photos */
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-gallery .gallery-large {
+  grid-row: 1 / 3;   /* Spans both rows on the left */
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.about-gallery .gallery-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 320px;
+}
+
+.about-gallery .gallery-small {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.about-gallery .gallery-small img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+
+.img-shift-down {
+  object-fit: cover;
+  object-position: 50% 50%; /* center the image crop horizontally and vertically */
+}
+
+/* About text / description block */
+.about-description {
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 16px var(--shadow);
+  margin-bottom: 2.5rem;
+}
+
+.about-description h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+}
+
+.about-description p {
+  color: var(--text-dark);
+  line-height: 1.75;
+  margin-bottom: 0.8rem;
+  font-size: 1.02rem;
+}
+
+/* ── Animal Care & Rules section ── */
+.rules-section {
+  background-color: var(--brown-dark);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.rules-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--orange);
+  margin-bottom: 1.5rem;
+}
+
+/* Grid of individual rule cards */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Single rule card */
+.rule-card {
+  background-color: var(--brown-mid);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1.5rem;
+  text-align: center;
+  transition: transform var(--transition);
+}
+
+.rule-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Large emoji / icon at the top of each rule card */
+.rule-icon {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.rule-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 0.4rem;
+}
+
+.rule-card p {
+  font-size: 0.88rem;
+  color: #e8d8c8;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   11. BOOKINGS PAGE
+   Styles specific to bookings.html
+   ============================================================ */
+
+.bookings-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Top split layout: info text | cat photo */
+.bookings-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2.5rem;
+}
+
+/* Left dark text box with introductory information */
+.bookings-info-box {
+  background-color: var(--brown-dark);
+  color: var(--white);
+  padding: 2rem 1.75rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.bookings-info-box h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+.bookings-info-box p {
+  line-height: 1.7;
+  color: #f0e6d8;
+  margin-bottom: 0.75rem;
+}
+
+/* Detail items (icon + text) */
+.booking-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.booking-detail .detail-icon { font-size: 1.2rem; }
+
+/* Right side cat image */
+.bookings-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.bookings-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 280px;
+}
+
+/* ── Booking form ── */
+.booking-form-wrapper {
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 16px var(--shadow);
+  max-width: 680px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.booking-form-wrapper h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--brown-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Each form row (label + input stacked) */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* Form labels */
+.form-group label {
+  display: block;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* Inputs, selects and textareas share the same base style */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--brown-light);
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+
+.form-group select {
+  -webkit-appearance: menulist-button;
+  appearance: menulist-button;
+  z-index: 9999 !important;
+  position: relative !important;
+  background-color: var(--white);
+}
+
+/* Focused field gets an orange outline ring */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(212, 131, 58, 0.2);
+}
+
+/* Terms and conditions checkbox row */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 0.1rem;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+
+.form-check label {
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+/* Submit button */
+.btn-submit {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--orange);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background-color: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(212, 131, 58, 0.4);
+}
+
+/* ── Validation error messages ── */
+.error-msg {
+  color: #c62828;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;   /* Hidden by default; shown by JS when needed */
+}
+
+/* ── Success message shown after booking ──
+   Hidden initially; JS fades it in */
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--brown-dark);
+  border-radius: var(--radius);
+  color: var(--white);
+  margin-top: 1.5rem;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.success-message .success-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: bounceIn 0.6s 0.3s both;
+}
+
+.success-message h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  font-size: 1rem;
+  color: #f0e6d8;
+}
+
+/* ── Keyframe animations used by the success message ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes bounceIn {
+  0%   { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.15); }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* ============================================================
+   12. RESPONSIVE / MEDIA QUERIES
+   ============================================================ */
+
+/* ── Tablet breakpoint (max 900px) ── */
+@media (max-width: 900px) {
+
+  /* Navbar: stack links below the logo area */
+  .nav-toggle {
+    display: flex;   /* Show hamburger icon */
+  }
+
+  /* Nav links are hidden until toggled */
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-basis: 100%;
+    order: 3;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    gap: 0.15rem;
+    background-color: var(--brown-mid);
+    margin-top: 0.5rem;
+  }
+
+  .nav-links.open {
+    display: flex;   /* JS toggles this class to show the menu */
+  }
+
+  .nav-links a,
+  .nav-links .btn-booking {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Homepage: stack hero and cat of the week into single columns */
+  .hero-section,
+  .cotw-section,
+  .bookings-intro {
+    grid-template-columns: 1fr;
+  }
+
+  /* Events and bookings page: stack columns */
+  .event-card {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card.reverse { direction: ltr; }
+
+  /* 3-col grids drop to 2 columns on tablet */
+  .cats-grid,
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About gallery: stack left and right */
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .about-gallery .gallery-large { grid-row: auto; }
+}
+
+/* ── Mobile breakpoint (max 600px) ── */
+@media (max-width: 600px) {
+
+  .page-banner h1 { font-size: 1.2rem; }
+
+  .hero-text-box h2 { font-size: 1.5rem; }
+
+  /* All multi-column grids become single column on mobile */
+  .cats-grid,
+  .menu-grid,
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cotw-section,
+  .hero-section,
+  .bookings-intro,
+  .event-card {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-form-wrapper {
+    padding: 1.5rem 1.25rem;
+    overflow: visible;
+  }
+
+  .booking-form-wrapper,
+  .bookings-main,
+  .bookings-intro,
+  .form-group {
+    overflow: visible;
+  }
+
+  .form-group select {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+
+  .nav-links,
+  .nav-toggle {
+    position: relative;
+    z-index: 1001;
+  }
+}

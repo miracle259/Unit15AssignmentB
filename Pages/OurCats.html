@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whiskers Café – Our Cats</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body>
+
+  <!--
+       NAVIGATION BAR (shared – identical on every page)-->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Whiskers Café home">
+      <span class="paw-icon" aria-hidden="true">🐾</span>
+      <span class="logo-text">Whiskers Café</span>
+    </a>
+    <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false"
+            aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
+      <!-- 'active' class highlights the current page link -->
+      <li><a href="OurCats.html">Our Cats</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="bookings.html" class="btn-booking">
+          <span class="cal-icon" aria-hidden="true">📅</span>
+          Bookings
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- PAGE TITLE BANNER -->
+  <div class="page-banner">
+    <h1>Our Cats Page</h1>
+  </div>
+
+
+  <!--MAIN CONTENT -->
+  <main class="cats-main">
+
+    <!-- ── Filter bar ──
+         Buttons let visitors filter cat cards by Age or Personality.
+         Click a button to show only cats matching that filter. -->
+    <div class="filter-bar" role="group" aria-label="Filter cats">
+      <label>Filter by:</label>
+      <!-- Show all cats -->
+      <button class="filter-btn active-filter" data-attr="all" data-value="all">All Cats</button>
+      <!-- Age filters -->
+      <button class="filter-btn" data-attr="age" data-value="young">Young</button>
+      <button class="filter-btn" data-attr="age" data-value="adult">Adult</button>
+      <button class="filter-btn" data-attr="age" data-value="senior">Senior</button>
+      <!-- Personality filters -->
+      <button class="filter-btn" data-attr="personality" data-value="playful">Playful</button>
+      <button class="filter-btn" data-attr="personality" data-value="affectionate">Affectionate</button>
+      <!-- Status filter -->
+      <button class="filter-btn" data-attr="status" data-value="available">Available for Adoption</button>
+    </div>
+
+
+    <!-- ── Cat profile grid (6 cats, 3 per row on desktop) ── -->
+    <div class="cats-grid">
+
+      <!-- ── CAT CARD 1: Luna ──
+           data-* attributes allow JavaScript filter buttons to show/hide cards -->
+      <article class="cat-card"
+               data-age="young"
+               data-personality="shy"
+               data-status="available"
+               aria-label="Luna cat profile">
+        <img
+          class="cat-card-img"
+          src="../Digital Assets/Catinaloafposition.jpg"
+          alt="Luna, a silver tabby cat with large Yellow eyes"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Luna</h3>
+          <p class="cat-meta">Age: 1 year &nbsp;|&nbsp; Silver Tabby</p>
+          <p>Luna is a gentle, dreamy kitten who warms up slowly but loves a
+             quiet lap once she trusts you. Perfect for a calm, loving home.</p>
+          <span class="status-badge status-available">Available for Adoption</span>
+        </div>
+      </article>
+
+      <!-- ── CAT CARD 2: Oliver ── -->
+      <article class="cat-card"
+               data-age="adult"
+               data-personality="playful"
+               data-status="reserved"
+               aria-label="Oliver cat profile">
+        <img
+          class="cat-card-img"
+          src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=700&auto=format&fit=crop "
+          alt="Oliver, a black and white tuxedo cat looking directly at the camera"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Oliver</h3>
+          <p class="cat-meta">Age: 3 years &nbsp;|&nbsp; Tuxedo</p>
+          <p>Oliver is the café entertainer – always chasing a toy or charming
+             visitors with his bold, confident personality. He loves other cats too.</p>
+          <span class="status-badge status-reserved">Reserved</span>
+        </div>
+      </article>
+
+      <!-- ── CAT CARD 3: Bella ── -->
+      <article class="cat-card"
+               data-age="senior"
+               data-personality="affectionate"
+               data-status="available"
+               aria-label="Bella cat profile">
+        <img
+          class="cat-card-img"
+          src="../Digital Assets/BlackCat.jpg"
+          alt="Bella, a fluffy tortoiseshell cat curled up on a soft cushion"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Bella</h3>
+          <p class="cat-meta">Age: 7 years &nbsp;|&nbsp; Tortoiseshell</p>
+          <p>Bella is a wise, affectionate senior cat who is happiest being
+             brushed and fussed over. She suits a quiet adult household perfectly.</p>
+          <span class="status-badge status-available">Available for Adoption</span>
+        </div>
+      </article>
+
+      <!-- ── CAT CARD 4: Simba ── -->
+      <article class="cat-card"
+               data-age="young"
+               data-personality="playful"
+               data-status="available"
+               aria-label="Simba cat profile">
+        <img
+          class="cat-card-img"
+          src="../Digital Assets/GingerCat.jpg"
+          alt="Simba, an orange tabby kitten with bright amber eyes"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Simba</h3>
+          <p class="cat-meta">Age: 6 months &nbsp;|&nbsp; Ginger Tabby</p>
+          <p>Simba is an energetic kitten bursting with confidence. He plays
+             hard, snuggles harder, and has never met a stranger.</p>
+          <span class="status-badge status-available">Available for Adoption</span>
+        </div>
+      </article>
+
+      <!-- ── CAT CARD 5: Misty (Resident café cat) ── -->
+      <article class="cat-card"
+               data-age="adult"
+               data-personality="calm"
+               data-status="resident"
+               aria-label="Misty cat profile">
+        <img
+          class="cat-card-img"
+          src="../Digital Assets/LazyCat.jpg"
+          alt="Misty, a sleek grey cat relaxing on a wooden shelf"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Misty</h3>
+          <p class="cat-meta">Age: 4 years &nbsp;|&nbsp; Blue-Grey</p>
+          <p>Misty is our serene permanent resident. She can often be found on
+             the window shelf, watching the street below with quiet dignity.</p>
+          <span class="status-badge status-resident">Café Resident</span>
+        </div>
+      </article>
+
+      <!-- ── CAT CARD 6: Coco ── -->
+      <article class="cat-card"
+               data-age="adult"
+               data-personality="affectionate"
+               data-status="available"
+               aria-label="Coco cat profile">
+        <img
+          class="cat-card-img"
+          src="../Digital Assets/CuriousCat.jpg"
+          alt="Coco, a brown Maine Coon cat with a magnificent fluffy tail"
+          loading="lazy"
+        />
+        <div class="cat-card-body">
+          <h3>Coco</h3>
+          <p class="cat-meta">Age: 2 years &nbsp;|&nbsp; Maine Coon Mix</p>
+          <p>Coco is a gentle giant with a heart of gold. She loves being held
+             and will follow her favourite visitors around all afternoon.</p>
+          <span class="status-badge status-available">Available for Adoption</span>
+        </div>
+      </article>
+
+    </div>
+    <!-- end cats-grid -->
+
+  </main>
+
+
+  <!-- FOOTER (shared) -->
+  <footer>
+    <p>🐾 <strong>Whiskers Café</strong> – Manchester's favourite cat café</p>
+    <p>123 Cosy Lane, Manchester, M1 1WC &nbsp;|&nbsp; 0161 000 0000</p>
+    <p>
+      <a href="about.html">About Us</a> &nbsp;|&nbsp;
+      <a href="bookings.html">Book a Visit</a>
+    </p>
+    <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">
+      &copy; 2025 Whiskers Café. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="../JS/Script.js"></script>
+</body>
+</html>
