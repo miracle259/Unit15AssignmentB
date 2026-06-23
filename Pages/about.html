@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Visit Whiskers Café for a unique cat café experience. Meet friendly cats, enjoy food and drinks, learn about adoption opportunities and book your visit online." />
+  <title>Whiskers Café – About</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION BAR (shared) -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Whiskers Café home">
+      <span class="paw-icon" aria-hidden="true">🐾</span>
+      <span class="logo-text">Whiskers Café</span>
+    </a>
+    <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false"
+            aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="OurCats.html">Our Cats</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li>
+        <a href="bookings.html" class="btn-booking">
+          <span class="cal-icon" aria-hidden="true">📅</span>
+          Bookings
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- PAGE TITLE BANNER -->
+  <div class="page-banner">
+    <h1>About Page</h1>
+  </div>
+
+
+  <!-- MAIN CONTENT-->
+  <main class="about-main">
+
+    <!-- ── Photo gallery mosaic ──
+         Large image on the left spanning both rows;
+         Two smaller images stacked on the right. -->
+    <section class="about-gallery" aria-label="Photo gallery of our cats and café">
+
+      <!-- Large left image -->
+      <div class="gallery-large">
+        <img
+          src="../Digital Assets/YawningCat.jpg"
+          alt="A content Siamese cat wrapped in a warm blanket inside Whiskers Café, yawning"
+          loading="lazy"
+        />
+      </div>
+
+    
+
+      <!-- Bottom-right smaller image -->
+      <div class="gallery-small">
+        <img
+          src="../Digital Assets/LittleCat.jpg"
+          alt="An orange tabby cat outdoors surrounded by yellow flowers, representing the joy of adoption"
+          loading="lazy"
+        />
+      </div>
+
+    </section>
+    <!-- end about gallery -->
+
+
+    <!-- ── About Whiskers Café description ── -->
+    <section class="about-description" aria-label="About Whiskers Café">
+
+      <h2>About Whiskers Café</h2>
+
+      <p>
+        Whiskers Café opened its doors in 2019 with a simple idea: that great coffee
+        and the calming presence of cats could make the world a little better.
+        Founded by animal lovers Sophie and James, the café grew out of a desire to
+        create a truly welcoming space for everyone — from busy students needing a
+        study break to families looking for a memorable afternoon out.
+      </p>
+
+      <p>
+        Our cats are central to everything we do. Every feline at Whiskers either
+        lives here as a permanent resident or is with us while they wait for their
+        forever home through our charity partner, <strong>Manchester Cat Rescue</strong>.
+        When you visit, you're not just having a coffee, you're helping us give our
+        cats the socialisation they need to thrive.
+      </p>
+
+      <p>
+        We're proud to have helped rehome over 140 cats since we opened. Our cats
+        always come first: they have access to quiet areas away from guests, and
+        our trained staff ensure they're happy and healthy every single day.
+      </p>
+
+      <p>
+        We source all our food and drink from local, independent suppliers in
+        Greater Manchester. Our menu changes with the seasons, and we cater for a
+        wide range of dietary requirements, just ask at the counter.
+      </p>
+
+    </section>
+    <!-- end about description -->
+
+
+    <!-- ── Animal Care & Rules ──
+         Displayed as an attractive grid of icon-led rule cards -->
+    <section class="rules-section" aria-label="Animal care rules and guidelines">
+
+      <h2>Animal Care &amp; Café Rules</h2>
+
+      <!-- Grid of individual rule cards -->
+      <div class="rules-grid">
+
+        <!-- Rule card 1 -->
+        <div class="rule-card">
+          
+          <h3>Be Gentle</h3>
+          <p>Always approach cats calmly and let them come to you first.
+             Never force interaction with a cat that is resting or moving away.</p>
+        </div>
+
+        <!-- Rule card 2 -->
+        <div class="rule-card">
+          
+          <h3>No Human Food</h3>
+          <p>Please do not feed any café food or drink to our cats.
+             Human food can be harmful to them. Our staff provide their food on a schedule.</p>
+        </div>
+
+        <!-- Rule card 3 -->
+        <div class="rule-card">
+          
+          <h3>Respect Rest Time</h3>
+          <p>If a cat is sleeping or in a raised rest area, please do not
+             disturb them. Rest is essential for their health and happiness.</p>
+        </div>
+
+        <!-- Rule card 4 -->
+        <div class="rule-card">
+          
+          <h3>Supervise Children</h3>
+          <p>Children under 12 must be supervised by a responsible adult at all
+             times. Please guide young visitors on how to interact kindly.</p>
+        </div>
+
+        <!-- Rule card 5 -->
+        <div class="rule-card">
+          
+          <h3>Keep Noise Low</h3>
+          <p>Our cats enjoy a calm atmosphere. Please keep voices low and avoid
+             sudden loud noises that may startle or stress them.</p>
+        </div>
+
+        <!-- Rule card 6 -->
+        <div class="rule-card">
+          
+          <h3>Photography</h3>
+          <p>You're welcome to photograph our cats — just no flash photography.
+             It can startle and distress animals. Natural light works beautifully anyway!</p>
+        </div>
+
+      </div>
+      <!-- end rules grid -->
+
+    </section>
+    <!-- end rules section -->
+
+  </main>
+
+
+  <!-- FOOTER (shared) -->
+  <footer>
+    <p>🐾 <strong>Whiskers Café</strong> – Manchester's favourite cat café</p>
+    <p>123 Cosy Lane, Manchester, M1 1WC &nbsp;|&nbsp; 0161 000 0000</p>
+    <p>
+      <a href="about.html">About Us</a> &nbsp;|&nbsp;
+      <a href="bookings.html">Book a Visit</a>
+    </p>
+    <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">
+      &copy; 2025 Whiskers Café. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="../JS/Script.js"></script>
+</body>
+</html>
